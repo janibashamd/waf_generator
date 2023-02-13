@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<signatures export_version="16.1.2">
+<sig id="300000000">
+  <rev num="1">
+    <sig_name>jani-signature</sig_name>
+    <rule>content:"AND"; nocase;</rule>
+    <last_update>2023-02-08 06:06:21</last_update>
+    <apply_to>Request</apply_to>
+    <risk>1</risk>
+    <accuracy>1</accuracy>
+    <doc></doc>
+    <attack_type>Abuse of Functionality</attack_type>
+  </rev>
+</sig>
+</signatures>

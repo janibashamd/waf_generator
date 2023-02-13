@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "name": "ves-io-allow-all",
+    "namespace": "shared",
+    "labels": {},
+    "annotations": {},
+    "disable": false
+  },
+  "spec": {
+    "algo": "FIRST_MATCH",
+    "any_server": {},
+    "rules": [],
+    "internally_generated": {},
+    "simple_rules": [
+      {
+        "name": "allow",
+        "action": "ALLOW",
+        "headers": [],
+        "waf_action": {
+          "none": {}
+        },
+        "scheme": [],
+        "rate_limiters": [],
+        "rate_limiter_specs": [],
+        "challenge_action": "DEFAULT_CHALLENGE",
+        "query_params": [],
+        "arg_matchers": [],
+        "cookie_matchers": []
+      }
+    ]
+  }
+}

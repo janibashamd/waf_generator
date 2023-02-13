@@ -1,0 +1,61 @@
+<html>
+<style>
+body {
+	text-align: center;
+	background-color: white;
+}
+form {
+	display: inline-block;
+}
+</style>
+<body>	
+	<h3>Welcome to WAF Custom Signature Generator</h3>
+	<form action = "/" method = "POST">
+		<p>Signature Name <input type = "text" name = "name" /></p>
+		<label for="Target">Select the target </label>
+			<select name="target" id="target">
+			  <option value="bigip">BigIP</option>
+			  <option value="nap">Nginx APP Protect</option>
+			  <option value="xc" selected>Distributed Cloud</option>
+			</select>
+		<br><br>
+
+		<label for="apply_to"> Select the signature type </label>
+			<select name="apply_to" id="apply_to">
+			  <option value="Request"> Request </option>
+			  <option value="Response"> Response </option>
+			</select>
+		<br>
+		<label for="attack_type"> Select the attack type </label>
+			<select name="attack_type" id="attack_type">
+			  <option value="Abuse of functionality"> Abuse of functionality </option>
+			  <option value="XSS"> XSS </option>
+			</select>
+		<br>
+
+		<label for="rule"> Select the rule </label>
+			<select name="rule" id="rule">
+			  <option value="Header"> Header contains </option>
+			  <option value="URL"> URL contains </option>
+				<option value="Payload"> Payload contains </option>
+			</select>
+		<br>
+
+		<label for="accuracy">Select the accuracy </label>
+			<select name="accuracy" id="accuracy">
+			  <option value="LOW">Low</option>
+			  <option value="MEDIUM">Medium</option>
+			  <option value="HIGH" selected>High</option>
+			</select>
+		<br>
+		<label for="priority">Select the risk </label>
+			<select name="priority" id="priority">
+			  <option value="LOW">Low</option>
+			  <option value="MEDIUM">Medium</option>
+			  <option value="HIGH" selected>High</option>
+			</select>
+		<br><br>
+		<a href="/update_template/" target="blank"><button class='btn btn-default'> Submit </button></a>
+	</form>
+</body>
+</html>
