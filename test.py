@@ -19,7 +19,7 @@ def home_page():
 def update_template():
     """Update templates after taking inputs."""
     try:
-        data = request.get_json()
+        data = request.get_data().for
         qp = str(request.args.get('header'))
         render_template("custom_pol.html", result=data)
         return jsonify({'query_param': qp})

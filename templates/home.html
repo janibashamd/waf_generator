@@ -8,8 +8,18 @@ form {
 	display: inline-block;
 }
 </style>
+<style type ="text/css" >
+   .footer{
+       position: fixed;
+       text-align: center;
+       bottom: 5px;
+       width: 100%;
+       background-color: Green
+   }
+</style>
 <body>	
-	<h3>Welcome to WAF Custom Signature Generator</h3>
+	<h2>Welcome to WAF Custom Signature Generator</h2>
+	<h4> Please provide inputs below to generate WAF bundle. </h4>
 	<form action = "/" method = "POST">
 		<p>Signature Name <input type = "text" name = "name" /></p>
 		<label for="Target">Select the target </label>
@@ -20,35 +30,36 @@ form {
 			</select>
 		<br><br>
 
-		<label for="apply_to"> Select the signature type </label>
+		<label for="apply_to"> Signature type </label>
 			<select name="apply_to" id="apply_to">
 			  <option value="Request"> Request </option>
 			  <option value="Response"> Response </option>
 			</select>
 		<br>
-		<label for="attack_type"> Select the attack type </label>
+		<label for="attack_type"> Attack type </label>
 			<select name="attack_type" id="attack_type">
 			  <option value="Abuse of functionality"> Abuse of functionality </option>
 			  <option value="XSS"> XSS </option>
 			</select>
-		<br>
+		<br><br>
 
-		<label for="rule"> Select the rule </label>
+		<label for="rule"> Rule </label>
 			<select name="rule" id="rule">
 			  <option value="Header"> Header contains </option>
 			  <option value="URL"> URL contains </option>
 				<option value="Payload"> Payload contains </option>
 			</select>
+		<p> <input type = "text" name = "name" /></p>
 		<br>
 
-		<label for="accuracy">Select the accuracy </label>
+		<label for="accuracy">Accuracy </label>
 			<select name="accuracy" id="accuracy">
 			  <option value="LOW">Low</option>
 			  <option value="MEDIUM">Medium</option>
 			  <option value="HIGH" selected>High</option>
 			</select>
 		<br>
-		<label for="priority">Select the risk </label>
+		<label for="priority">Risk </label>
 			<select name="priority" id="priority">
 			  <option value="LOW">Low</option>
 			  <option value="MEDIUM">Medium</option>
@@ -57,5 +68,6 @@ form {
 		<br><br>
 		<a href="/update_template/" target="blank"><button class='btn btn-default'> Submit </button></a>
 	</form>
+	<div class="footer"> Disclaimer: This is open source project.</div>
 </body>
 </html>
