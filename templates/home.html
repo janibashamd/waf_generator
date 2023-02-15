@@ -1,11 +1,11 @@
 <html>
 <style>
 body {
-	text-align: center;
-	background-color: white;
+        text-align: center;
+        background-color: white;
 }
 form {
-	display: inline-block;
+        display: inline-block;
 }
 </style>
 <style type ="text/css" >
@@ -17,57 +17,56 @@ form {
        background-color: Green
    }
 </style>
-<body>	
-	<h2>Welcome to WAF Custom Signature Generator</h2>
-	<h4> Please provide inputs below to generate WAF bundle. </h4>
-	<form action = "/" method = "POST">
-		<p>Signature Name <input type = "text" name = "name" /></p>
-		<label for="Target">Select the target </label>
-			<select name="target" id="target">
-			  <option value="bigip">BigIP</option>
-			  <option value="nap">Nginx APP Protect</option>
-			  <option value="xc" selected>Distributed Cloud</option>
-			</select>
-		<br><br>
+<body>
+        <h2>Welcome to WAF Custom Signature Generator</h2>
+        <h4> Please provide inputs below to generate WAF bundle. </h4>
+        <form action = "/" method = "POST">
+                <p>Signature Name <input type = "text" name = "name" /></p>
+                <label for="Target">Select the target </label>
+                        <select name="target" id="target">
+                          <option value="bigip">BigIP</option>
+                          <option value="nap">Nginx APP Protect</option>
+                          <option value="xc" selected>Distributed Cloud</option>
+                        </select>
+                        <br><br>
 
-		<label for="apply_to"> Signature type </label>
-			<select name="apply_to" id="apply_to">
-			  <option value="Request"> Request </option>
-			  <option value="Response"> Response </option>
-			</select>
-		<br>
-		<label for="attack_type"> Attack type </label>
-			<select name="attack_type" id="attack_type">
-			  <option value="Abuse of functionality"> Abuse of functionality </option>
-			  <option value="XSS"> XSS </option>
-			</select>
-		<br><br>
+                <label for="apply_to"> Signature type </label>
+                        <select name="apply_to" id="apply_to">
+                          <option value="Request"> Request </option>
+                          <option value="Response"> Response </option>
+                        </select>
+                        <br><br>
+                <label for="attack_type"> Attack type </label>
+                        <select name="attack_type" id="attack_type">
+                          <option value="Abuse of functionality"> Abuse of functionality </option>
+                          <option value="XSS"> XSS </option>
+                        </select>
+                        <br><br>
 
-		<label for="rule"> Rule </label>
-			<select name="rule" id="rule">
-			  <option value="Header"> Header contains </option>
-			  <option value="URL"> URL contains </option>
-				<option value="Payload"> Payload contains </option>
-			</select>
-		<p> <input type = "text" name = "name" /></p>
-		<br>
-
-		<label for="accuracy">Accuracy </label>
-			<select name="accuracy" id="accuracy">
-			  <option value="LOW">Low</option>
-			  <option value="MEDIUM">Medium</option>
-			  <option value="HIGH" selected>High</option>
-			</select>
-		<br>
-		<label for="priority">Risk </label>
-			<select name="priority" id="priority">
-			  <option value="LOW">Low</option>
-			  <option value="MEDIUM">Medium</option>
-			  <option value="HIGH" selected>High</option>
-			</select>
-		<br><br>
-		<a href="/update_template/" target="blank"><button class='btn btn-default'> Submit </button></a>
-	</form>
-	<div class="footer"> Disclaimer: This is open source project.</div>
+                <label for="rule"> Rule </label>
+                        <select name="rule" id="rule">
+                          <option value="Header"> Header contains </option>
+                          <option value="URL"> URL contains </option>
+                                <option value="Payload"> Payload contains </option>
+                        </select>
+                <p> <input type = "text" name = "val" id="val"/></p>
+                <br><br>
+                <label for="accuracy">Accuracy </label>
+                        <select name="accuracy" id="accuracy">
+                          <option value="LOW">Low</option>
+                          <option value="MEDIUM">Medium</option>
+                          <option value="HIGH" selected>High</option>
+                        </select>
+                        <br><br>
+                <label for="priority">Risk </label>
+                        <select name="priority" id="priority">
+                          <option value="LOW">Low</option>
+                          <option value="MEDIUM">Medium</option>
+                          <option value="HIGH" selected>High</option>
+                        </select>
+                        <br><br>
+                <a target="blank"><button class='btn btn-default'> Submit </button></a>
+        </form>
+        <div class="footer"> Disclaimer: This is open source project.</div>
 </body>
 </html>
