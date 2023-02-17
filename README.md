@@ -18,5 +18,6 @@ Prerequisites:
 <br><br>
 
 Steps for creating custom WAF bundle:
-1. Login to `<lb-domain-name>` and provide all user inputs
-2. Click on `Submit` button and then copy/download the populated bundle data
+1. Open browser and navigate to `<lb-domain-name>`
+2. Provide all user inputs and then click on `Submit` button 
+3. From page copy/download the populated WAF signature data
