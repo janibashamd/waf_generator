@@ -17,7 +17,7 @@ def policy_creator():
         target = request.form.get("target")
         if target == "bigip":
             rule_value = str(request.form.get('rule')) + ":" + str(request.form.get('val')) + "; nocase;"
-            waf_data = {"sig_name": str(request.form.get('name')), "apply_to": str(request.form.get('apply_to')),
+            waf_data = {"name": str(request.form.get('name')), "apply_to": str(request.form.get('apply_to')),
                         "attack_type": str(request.form.get('attack_type')), "rule": rule_value,
                         "accuracy": str(request.form.get('accuracy')), "risk": str(request.form.get('priority'))}
             update_xml(waf_data)
