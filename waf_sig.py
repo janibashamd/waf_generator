@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, request, render_template
 import json
 from flask import send_file
 
@@ -9,42 +9,49 @@ sig_gen = Flask(__name__)
 @sig_gen.route('/', methods=['GET', 'POST'])
 def policy_creator():
     """Policy creator default route."""
+    global json_path
     if request.method == 'GET':
         return render_template('home.html')
     elif request.method == 'POST':
         target = request.form.get("target")
         if target == "bigip":
-            pass #chaithanya
-            waf_data = ""
+            pass
+            json_path = "./templates/bigip_waf_conf.xml"
         elif target == "nap":
-            pass #shajiya
-            waf_data = ""
-        elif target=="xc":
-            d = {}
-            d["sign_name"] = str(request.form.get('name'))
-            d["sign_type"] = str(request.form.get('apply_to'))
-            d["attack"] = str(request.form.get('attack_type'))
-            d["rule"] = str(request.form.get('rule'))
-            d["value"] = str(request.form.get('val'))
-            d["accuracy"] = str(request.form.get('accuracy'))
-            d["risk"] = str(request.form.get('priority'))
-            # send query param to update service policy json file
+            rule_value = str(request.form.get('rule')) + ":" + str(request.form.get('val')) + "; nocase;"
+            waf_data = [{"name": str(request.form.get('name')), "signatureType": str(request.form.get('apply_to')),
+                        "attackType": {"name": str(request.form.get('attack_type'))}, "rule": rule_value,
+                         "accuracy": str(request.form.get('accuracy')), "risk": str(request.form.get('priority'))}]
+            update_ngx_json(waf_data)
+            json_path = "./templates/nginx_basic_conf.json"
+        elif target == "xc":
+            d = {"sign_name": str(request.form.get('name')), "sign_type": str(request.form.get('apply_to')),
+                 "attack": str(request.form.get('attack_type')), "rule": str(request.form.get('rule')),
+                 "value": str(request.form.get('val')), "accuracy": str(request.form.get('accuracy')),
+                 "risk": str(request.form.get('priority'))}
+            # send user param to update service policy json file
             update_xc_json(d)
+            json_path = "./templates/sp.json"
         else:
             # custom error message
             print("nothing matched!")
-        json_path = "./templates/sp.json"
+
         # return send_file(path, as_attachment=True)
         with open(json_path, 'r') as f:
-            return render_template('custom_pol.html', text=f.read())
+            return render_template('custom_pol.html', target=target, text=f.read())
 
 
-@sig_gen.route('/download_file/', methods=['GET'])
-def download_file():
+@sig_gen.route('/download_file/<target>', methods=['GET'])
+def download_file(target):
     """Downloading file endpoint."""
-    json_path = "./templates/sp.json"
-    print("Successfully downloaded waf bundle.")
-    return send_file(json_path, as_attachment=True)
+    if target == "xc":
+        file_path = "./templates/sp.json"
+    elif target == "nap":
+        file_path = "./templates/nginx_basic_conf.json"
+    else:
+        file_path = "./templates/bigip_waf_conf.xml"
+    print("Successfully downloaded waf bundle for : " + str(target))
+    return send_file(file_path, as_attachment=True)
 
 
 def update_xc_json(inputs):
@@ -55,18 +62,22 @@ def update_xc_json(inputs):
         data["metadata"]["name"] = inputs["sign_name"]
         if inputs["rule"] == "Header":
             data["spec"]["rule_list"]["rules"][0]["spec"]["headers"][0]["item"]["exact_values"][0] = inputs["value"]
-        #waf_data=json.dump(data)
     with open("./templates/sp.json", "w") as output:
         json.dump(data, output)
-    #return waf_data
 
 
 def update_xml():
+    """Update BigIP basic template with user inputs."""
     pass
 
 
-def update_ngx_json():
-    pass
+def update_ngx_json(waf_data):
+    """Update Nginx basic template with user inputs."""
+    with open('./nginx_basic_conf.json', 'r') as file:
+        data = json.load(file)
+    data["signatures"] = waf_data
+    with open("./templates/nginx_basic_conf.json", "w") as output:
+        json.dump(data, output)
 
 
 if __name__ == '__main__':

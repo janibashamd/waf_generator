@@ -1,0 +1,1 @@
+{"softwareVersion": "15.1.0", "signatures": [{"name": "jb", "signatureType": "Request", "attackType": {"name": "Abuse of functionality"}, "rule": "Header:basha; nocase;", "accuracy": "HIGH", "risk": "HIGH"}]}
