@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template
 import json
 from flask import send_file
+import xml.etree.ElementTree as ET
 
 sig_gen = Flask(__name__)
 
@@ -15,8 +16,13 @@ def policy_creator():
     elif request.method == 'POST':
         target = request.form.get("target")
         if target == "bigip":
-            pass
+            rule_value = str(request.form.get('rule')) + ":" + str(request.form.get('val')) + "; nocase;"
+            waf_data = {"sig_name": str(request.form.get('name')), "apply_to": str(request.form.get('apply_to')),
+                        "attack_type": str(request.form.get('attack_type')), "rule": rule_value,
+                        "accuracy": str(request.form.get('accuracy')), "risk": str(request.form.get('priority'))}
+            update_xml(waf_data)
             json_path = "./templates/bigip_waf_conf.xml"
+
         elif target == "nap":
             rule_value = str(request.form.get('rule')) + ":" + str(request.form.get('val')) + "; nocase;"
             waf_data = [{"name": str(request.form.get('name')), "signatureType": str(request.form.get('apply_to')),
@@ -24,6 +30,7 @@ def policy_creator():
                          "accuracy": str(request.form.get('accuracy')), "risk": str(request.form.get('priority'))}]
             update_ngx_json(waf_data)
             json_path = "./templates/nginx_basic_conf.json"
+
         elif target == "xc":
             d = {"sign_name": str(request.form.get('name')), "sign_type": str(request.form.get('apply_to')),
                  "attack": str(request.form.get('attack_type')), "rule": str(request.form.get('rule')),
@@ -32,9 +39,6 @@ def policy_creator():
             # send user param to update service policy json file
             update_xc_json(d)
             json_path = "./templates/sp.json"
-        else:
-            # custom error message
-            print("nothing matched!")
 
         # return send_file(path, as_attachment=True)
         with open(json_path, 'r') as f:
@@ -66,9 +70,18 @@ def update_xc_json(inputs):
         json.dump(data, output)
 
 
-def update_xml():
+def update_xml(waf_data):
     """Update BigIP basic template with user inputs."""
-    pass
+    tree = ET.parse('bigip_waf_conf.xml')
+    root = tree.getroot()
+    name = root.find('sig').find('rev')
+    name.set("sig_name", waf_data["name"])
+    name.set("risk", waf_data["risk"])
+    name.set("apply_to", waf_data["apply_to"])
+    name.set("accuracy", waf_data["accuracy"])
+    name.set("rule", waf_data["rule"])
+
+    tree.write("./templates/bigip_waf_conf.xml")
 
 
 def update_ngx_json(waf_data):
