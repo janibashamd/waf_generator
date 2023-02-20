@@ -14,14 +14,14 @@ RUN pip install requests
 
 RUN pip3 install flask-restful
  
-COPY  --chown=siggen:siggen ./* /home/siggen/demo/
+COPY  --chown=siggen:siggen ./* /home/siggen/custom_waf_generator/
 
-WORKDIR /home/siggen/demo/
+WORKDIR /home/siggen/custom_waf_generator/
 
 RUN ls -a
 
 EXPOSE 80
 
-CMD [ "python3", "test.py" ]
+CMD [ "python3", "waf_sig.py" ]
 
 
