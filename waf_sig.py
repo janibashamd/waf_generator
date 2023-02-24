@@ -34,11 +34,12 @@ def policy_creator():
         elif target == "xc":
             d = {"sign_name": str(request.form.get('name')), "sign_type": str(request.form.get('apply_to')),
                  "attack": str(request.form.get('attack_type')), "rule": str(request.form.get('rule')),
+                 "name": str(request.form.get('key')),
                  "value": str(request.form.get('val')), "accuracy": str(request.form.get('accuracy')),
                  "risk": str(request.form.get('priority'))}
             # send user param to update service policy json file
             update_xc_json(d)
-            json_path = "./templates/sp.json"
+            json_path = "./templates/f5xc_service_policy.json"
 
         # return send_file(path, as_attachment=True)
         with open(json_path, 'r') as f:
@@ -49,7 +50,7 @@ def policy_creator():
 def download_file(target):
     """Downloading file endpoint."""
     if target == "xc":
-        file_path = "./templates/sp.json"
+        file_path = "./templates/f5xc_service_policy.json"
     elif target == "nap":
         file_path = "./templates/nginx_basic_conf.json"
     else:
@@ -61,12 +62,14 @@ def download_file(target):
 def update_xc_json(inputs):
     """Method to update default json accordingly."""
     # gen cust sign
-    with open('./templates/sp.json', 'r') as file:
+    with open('./templates/f5xc_service_policy.json', 'r') as file:
         data = json.load(file)
         data["metadata"]["name"] = inputs["sign_name"]
         if inputs["rule"] == "Header":
+            data["spec"]["rule_list"]["rules"][0]["spec"]["headers"][0]["name"] = inputs["name"]
             data["spec"]["rule_list"]["rules"][0]["spec"]["headers"][0]["item"]["exact_values"][0] = inputs["value"]
-    with open("./templates/sp.json", "w") as output:
+            #data["spec"]["rule_list"]["rules"][0]["spec"]["headers"][0]["item"]["exact_values"][0] = inputs["value"]
+    with open("./templates/f5xc_service_policy.json", "w") as output:
         json.dump(data, output)
 
 

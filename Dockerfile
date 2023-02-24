@@ -14,7 +14,7 @@ RUN pip install requests
 
 RUN pip3 install flask-restful
  
-COPY  --chown=siggen:siggen ./* /home/siggen/custom_waf_generator/
+COPY  --chown=siggen:siggen . /home/siggen/custom_waf_generator/
 
 WORKDIR /home/siggen/custom_waf_generator/
 
