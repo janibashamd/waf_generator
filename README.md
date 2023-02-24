@@ -7,7 +7,7 @@ F5 has different different products covering WAF needs as per customer requireme
 we don't have a tool/script to generate a custom WAF which can be created and used for customer deployments. So the main purpose of this project is to have a unified
 tool/UI using which customer can get expected WAF bundles as per their product requirement.
 <br><br>
-![image](https://user-images.githubusercontent.com/6093830/221209395-a6b1e157-1f0e-4af6-8169-c1774ccee450.png)
+![image](https://user-images.githubusercontent.com/6093830/221209562-d479d5d2-e3d2-42a3-8bc1-5b451071fd74.png)
 
 Tools used:<br>
 Python, html, Docker and Flask
