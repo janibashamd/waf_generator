@@ -10,6 +10,8 @@ RUN pip install flask-restful
 
 COPY . /hackfest/waf_sig_gen
 
+RUN chmod -R 777 /hackfest/waf_sig_gen
+
 EXPOSE 8000
 
 CMD ["python", "waf_sig.py"]
