@@ -2,7 +2,6 @@
 Title: 'Custom WAF Generator'
 Date: 2023-02-28
 Excerpt: 'Unified UI using which customer can get generate custom WAF bundle.'
-Author: ['Mohammed Janibasha']
 Tags: ['Hackfest', 'F5', 'F5XC', 'waf', 'python']
 Team: ['Shubham Mishra', 'Mohammed Janibasha', 'Shajiya Shaik', 'Chaithanya Dileep']
 Sponsor: []
