@@ -97,9 +97,4 @@ def update_ngx_json(waf_data):
 
 
 if __name__ == '__main__':
-<<<<<<< HEAD
     sig_gen.run(host='0.0.0.0', port=8000, debug=True)
-=======
-    sig_gen.run(host='0.0.0.0', port=80, debug=True)
-                                           
->>>>>>> 93938a6914e3570aa1a027dc1346aa71c37d5f9d
