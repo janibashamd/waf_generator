@@ -27,7 +27,7 @@ Below are the steps for creating custom WAF bundle:
 1. Open browser and navigate to `http://wafgen.f5-hyd-demo.com`
 2. Provide all user inputs and then click on `Submit` button 
 3. From page, users can either `copy` or `download` the populated WAF signature data
-4. Next as a optional step, customers can import this bundle in any of the WAF engines and add it to their WAF configuration (Note: this is not part of the project)
+4. Next as a optional step, customers can import this bundle in any of the WAF engines and add it to their WAF configuration (Note: this is not covered as part of the project)
 
 
 ## Business Value
