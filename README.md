@@ -9,7 +9,7 @@ Mentor: ['Valentin Tobi']
 ---
 ## Project Description
 
-Main purpose of this project is to have a unified tool/UI using which customer can get expected WAF bundles as per their product requirement.
+Main purpose of this project is to have a unified tool/UI using which customer can create custom WAF bundles as per their WAF product requirement.
 
 ## Key Hypothesis
 F5 has diversified products like BIG-IP, Nginx App Protect (NAP) and F5 Distributed Cloud (F5 XC) covering needs as per customer requirements. Currently we don't have a way for customers to generate custom WAF signatures. WAF Generator (WafGen) aims to make this workflow smooth and ridiculously easy by allowing them to create custom WAF bundles as per user inputs and per WAF engine. </br>
@@ -21,18 +21,18 @@ WafGen offers a unified GUI that allows customers to generate custom WAF bundle 
 
 ## How It Works
 
-Application is written in flask and is deployed as k8s pod. K8s service is created to publish this over internet so users can access the application.
+Application is written in flask and is deployed as k8s pod and is published on F5 XC load balancer over internet so users can access the application.
 
 Below are the steps for creating custom WAF bundle:
 1. Open browser and navigate to `http://wafgen.f5-hyd-demo.com`
 2. Provide all user inputs and then click on `Submit` button 
 3. From page, users can either `copy` or `download` the populated WAF signature data
-4. Next customers can import this bundle in any of the WAF engines
+4. Next as a optional step, customers can import this bundle in any of the WAF engines and add it to their WAF configuration (Note: this is not part of the project)
 
 
 ## Business Value
 
-This project provides a unified location to create custom WAF bundle as per customer WAF product.
+This project provides a unified UI to create custom WAF bundle as per customer WAF requirements.
 
 ## Technologies Used
 
