@@ -21,6 +21,13 @@ F5 has different different products covering WAF needs as per customer requireme
 
 Application is written in flask and is deployed as k8s pod. K8s service is created to publish this over internet so users can access the application.
 
+Below are the steps for creating custom WAF bundle:
+1. Open browser and navigate to `http://wafgen.f5-hyd-demo.com`
+2. Provide all user inputs and then click on `Submit` button 
+3. From page, users can either `copy` or `download` the populated WAF signature data
+4. Next customers can import this bundle in any of the WAF engines
+
+
 ## Business Value
 
 This project provides a unified location to create custom WAF bundle as per customer WAF product.
@@ -31,11 +38,11 @@ Python, Flask, Jinja2 and html
 
 ## Presentations
 
-#### VIDEO EXAMPLE:
+#### VIDEO:
 
 
 
-#### POWERPOINT EXAMPLE:
+#### POWERPOINT:
 https://f5-my.sharepoint.com/:p:/p/m_janibasha/EYvrQKEPvqhIgTlk4SsxagYBq_nsI7dr33ZJGaEjWBfNQA?e=Bpev1J
 
 
