@@ -20,7 +20,7 @@ form {
 <body>
         <h2>Welcome to WAF Custom Signature Generator</h2>
         <h4> Please provide inputs below to generate WAF bundle. </h4>
-        <form action="http://127.0.0.1:80/" method="POST">
+        <form method="POST">
                 <p>Signature Name <input type = "text" name = "name" /></p>
                 <label for="Target">Select the target </label>
                         <select name="target" id="target">
@@ -49,7 +49,8 @@ form {
                           <option value="URL"> URL contains </option>
                                 <option value="Payload"> Payload contains </option>
                         </select>
-                <p> <input type = "text" name = "val" id="val"/></p>
+		<p> Header Name <input type = "text" name = "key" id="key"/></p>
+                <p> Exact Value <input type = "text" name = "val" id="val"/></p>
                 <br><br>
                 <label for="accuracy">Accuracy </label>
                         <select name="accuracy" id="accuracy">
