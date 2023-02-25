@@ -21,7 +21,7 @@ WafGen offers a unified GUI that allows customers to generate custom WAF bundle 
 
 ## How It Works
 
-Application is written in flask and is deployed as k8s pod and is published on F5 XC load balancer over internet so users can access the application.
+Application is written in flask, deployed as k8s service and finally published on F5 XC load balancer over internet so users can access the application.
 
 Below are the steps for creating custom WAF bundle:
 1. Open browser and navigate to `http://wafgen.f5-hyd-demo.com`
