@@ -1,7 +1,7 @@
 ---
 Title: 'Custom WAF Generator'
 Date: 2023-02-28
-Excerpt: 'Unified UI using which customer can get generate custom WAF bundle.'
+Excerpt: 'Unified UI using which customer can generate custom WAF bundle.'
 Tags: ['Hackfest', 'F5', 'F5XC', 'waf', 'python']
 Team: ['Shubham Mishra', 'Mohammed Janibasha', 'Shajiya Shaik', 'Chaithanya Dileep']
 Sponsor: []
@@ -12,8 +12,10 @@ Mentor: ['Valentin Tobi']
 Main purpose of this project is to have a unified tool/UI using which customer can get expected WAF bundles as per their product requirement.
 
 ## Key Hypothesis
+F5 has diversified products like BIG-IP, Nginx App Protect (NAP) and F5 Distributed Cloud (F5 XC) covering needs as per customer requirements. Currently we don't have a way for customers to generate custom WAF signatures. WAF Generator (WafGen) aims to make this workflow smooth and ridiculously easy by allowing them to create custom WAF bundles as per user inputs and per WAF engine. </br>
+</br>
+WafGen offers a unified GUI that allows customers to generate custom WAF bundle for all 3 flavors of WAF.
 
-F5 has different different products covering WAF needs as per customer requirements. BigIp, Nginx App Protect and F5 Distributed Cloud provide WAF support and as of now we don't have a tool/script to generate a custom WAF which can be created and used for customer deployments.
 ![hackfest](https://user-images.githubusercontent.com/6093830/221343325-1a25e8cb-ff30-4a05-af87-74fe2d00d6a7.JPG)
 
 
