@@ -1,0 +1,47 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: waf-generator-flask
+  labels:
+    app: waf-generator-flask
+  annotations:
+    ves.io/sites: ves-io-system/sg3-sin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: waf-generator-flask
+  template:
+    metadata:
+      labels:
+        app: waf-generator-flask
+    spec:
+      containers:
+        - name: waf-generator-flask
+          image: registry.gitlab.com/sbmmsra/waf-signature-generator:latest
+          ports:
+            - containerPort: 8000
+              name: waf-generator
+          command:
+            - tail ls /home/siggen/custom_waf_generator/
+          livenessProbe:
+            exec:
+                command:
+                - cat
+                - /etc/hosts
+            initialDelaySeconds: 20
+            periodSeconds: 20
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: waf-generator-flask
+spec:
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: waf-generator 
+  selector:
+    app: waf-generator-flask
+  sessionAffinity: None
