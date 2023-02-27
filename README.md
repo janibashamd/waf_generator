@@ -25,7 +25,7 @@ Application is written in flask, deployed as k8s service and finally published o
 </br></br>
 
 #### API use case steps
-API collection is readily available in repo so users can use them and below are some details about API implentation.</br>
+API collection is readily available in repo so users can use them and below are some details about API implementation.</br>
   
 | Valid API Endpoints      |   Allowed HTTP Methods   |      param options          |
 | ----------| ----------------------------------------|---------------------------- |
