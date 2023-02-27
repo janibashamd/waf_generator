@@ -22,17 +22,19 @@ WafGen offers a unified GUI that allows customers to generate custom WAF bundle 
 ## How It Works
 
 Application is written in flask, deployed as k8s service and finally published on F5 XC load balancer over internet so users can access the application.
+</br></br>
 
-APIs:
+APIs: </br>
+API collection is readily available in repo so users can use them and below are some details about API implentation.</br>
   
-| Valid API Endpoints  | Allowed HTTP Methods                                                               |
-| ------ | ------------------------------------------------------------------------- |
-| /                        | GET & POST |
-| /download_file/[target]  | GET |
+| Valid API Endpoints      |   Allowed HTTP Methods   |      param options          |
+| ----------| ----------------------------------------|---------------------------- |
+| /                        |        GET & POST        |
+| /download_file/[target]  |          GET             |   target = bigip/nap/xc     |
+</br>
 
+Below is the sample form data payload for sending POST request to API Endpoint `/` 
 ```
-Example Keys/Values for form data in request to API Endpoint /
-
 "formdata": [
 	{
 	"key": "name",
@@ -81,7 +83,7 @@ Example Keys/Values for form data in request to API Endpoint /
 	}
 ]
   ```
-
+</br></br>
 Below are the steps for creating custom WAF bundle through UI:
 1. Open browser and navigate to `https://wafgen.f5-hyd-demo.com`
 2. Provide all user inputs and then click on `Submit` button 
