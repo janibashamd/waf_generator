@@ -38,7 +38,7 @@ def policy_creator():
             if attack_value == "XSS":
                 attack_value = "Cross Site Scripting (XSS)"
             if attack_value == "Abuse of functionality":
-                attack_value = str(request.form.get('attack_type'))
+                attack_value = "Abuse of Functionality"
             rule_value = dynamic_value + ":" + "\"" + str(request.form.get('val')) + "\"" + "; nocase;"
             waf_data = {"name": str(request.form.get('name')), "apply_to": str(request.form.get('apply_to')),
                         "attack_type": attack_value, "rule": rule_value,
