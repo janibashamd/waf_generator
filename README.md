@@ -25,9 +25,15 @@ Application is written in flask, deployed as k8s service and finally published o
 
 
 ---
-Valid API Endpoints: [ /, /download_file/<target>]
-Allowed Mehods: [(GET & POST), GET]
+ [ , ]
+ [, GET]
 ---
+  
+| Valid API Endpoints  | Allowed Mehods                                                               |
+| ------ | ------------------------------------------------------------------------- |
+| /  | GET & POST |
+| /download_file/<target>  | GET |
+  
 
 Below are the steps for creating custom WAF bundle through UI:
 1. Open browser and navigate to `https://wafgen.f5-hyd-demo.com`
