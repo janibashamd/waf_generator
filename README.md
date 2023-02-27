@@ -109,7 +109,7 @@ Python, Flask, Jinja2 and html
 ## Presentations
 
 #### VIDEO:
-
+https://web.microsoftstream.com/video/01ab1231-26ab-4bc2-86b6-3a1c2e22f9f1
 
 
 #### POWERPOINT:
