@@ -23,11 +23,18 @@ WafGen offers a unified GUI that allows customers to generate custom WAF bundle 
 
 Application is written in flask, deployed as k8s service and finally published on F5 XC load balancer over internet so users can access the application.
 
-Below are the steps for creating custom WAF bundle:
+
+---
+Valid API Endpoints: [ /, /download_file/<target>]
+Allowed Mehods: [(GET & POST), GET]
+---
+
+Below are the steps for creating custom WAF bundle through UI:
 1. Open browser and navigate to `https://wafgen.f5-hyd-demo.com`
 2. Provide all user inputs and then click on `Submit` button 
 3. From page, users can either `copy` or `download` the populated WAF signature data
 4. Next as a optional step, customers can import this bundle in any of the WAF engines and add it to their WAF configuration (Note: this is not covered as part of the project)
+
 
 ## Deployment Steps
 If users don't want to use publicly available DNS, they can deploy this application locally in below ways:
