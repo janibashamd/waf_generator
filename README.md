@@ -23,17 +23,64 @@ WafGen offers a unified GUI that allows customers to generate custom WAF bundle 
 
 Application is written in flask, deployed as k8s service and finally published on F5 XC load balancer over internet so users can access the application.
 
-
----
- [ , ]
- [, GET]
----
+APIs:
   
 | Valid API Endpoints  | Allowed Mehods                                                               |
 | ------ | ------------------------------------------------------------------------- |
-| /  | GET & POST |
-| /download_file/<target>  | GET |
-  
+| /                        | GET & POST |
+| /download_file/[target]  | GET |
+
+```
+Example Values for form data in request (POST)
+
+"formdata": [
+	{
+	"key": "name",
+	"value": "custom-waf-sig",
+	"type": "default"
+	},
+	{
+	"key": "target",
+	"value": "xc",
+	"type": "default"
+	},	
+	{
+	"key": "apply_to",
+	"value": "Request",
+	"type": "default"
+	},
+	{
+	"key": "attack_type",
+	"value": "Abuse of functionality",
+	"type": "default"
+	},
+	{
+	"key": "rule",
+	"value": "Header",
+	"type": "default"
+	},
+	{
+	"key": "key",
+	"value": "custom-hdr",
+	"type": "default"
+	},
+	{
+	"key": "val",
+	"value": "<script>",
+	"type": "default"
+	},
+	{
+	"key": "accuracy",
+	"value": "HIGH",
+	"type": "default"
+	},
+	{
+	"key": "priority",
+	"value": "HIGH",
+	"type": "default"	
+	}
+]
+  ```
 
 Below are the steps for creating custom WAF bundle through UI:
 1. Open browser and navigate to `https://wafgen.f5-hyd-demo.com`
