@@ -31,7 +31,7 @@ APIs:
 | /download_file/[target]  | GET |
 
 ```
-Example Values for form data in request to API Endpoint /
+Example Keys/Values for form data in request to API Endpoint /
 
 "formdata": [
 	{
