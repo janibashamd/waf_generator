@@ -12,7 +12,7 @@ Mentor: ['Valentin Tobi']
 Main purpose of this project is to have a unified tool/UI using which customer can create custom WAF bundles as per their WAF product requirement.
 
 ## Key Hypothesis
-F5 has diversified products like BIG-IP, Nginx App Protect (NAP) and F5 Distributed Cloud (F5 XC) covering needs as per customer requirements. Currently we don't have a way for customers to generate custom WAF signatures. WAF Generator (WafGen) aims to make this workflow smooth and ridiculously easy by allowing them to create custom WAF bundles as per user inputs and per WAF engine. </br>
+F5 has diversified products like BIG-IP, Nginx App Protect (NAP) and F5 Distributed Cloud (F5 XC) covering needs as per customer requirements. Currently we don't have a way for customers to generate custom WAF signatures. Waf custom signature Generator (WafGen) aims to make this workflow smooth and ridiculously easy by allowing them to create custom WAF bundles as per user inputs and per WAF engine. </br>
 </br>
 WafGen offers a unified GUI that allows customers to generate custom WAF bundle for all 3 flavors of WAF.
 
