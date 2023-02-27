@@ -16,10 +16,33 @@ def policy_creator():
     elif request.method == 'POST':
         target = request.form.get("target")
         if target == "bigip":
-            rule_value = str(request.form.get('rule')) + ":" + str(request.form.get('val')) + "; nocase;"
+            accuracy_result = str(request.form.get('accuracy'))
+            priority_result = str(request.form.get('priority'))
+            attack_value = str(request.form.get('attack_type'))
+            if accuracy_result == "HIGH":
+                final_accracy_result = 3
+            elif accuracy_result == "MEDIUM":
+                final_accracy_result = 2
+            else:
+                final_accracy_result = 1
+            if priority_result == "HIGH":
+                final_priority_result = 3
+            elif priority_result == "MEDIUM":
+                final_priority_result = 2
+            else:
+                final_priority_result = 1
+            if request.form.get("rule") == "Header":
+                dynamic_value = "headercontent"
+            elif request.form.get("rule") == "URL":
+                dynamic_value = "uricontent"
+            if attack_value == "XSS":
+                attack_value = "Cross Site Scripting (XSS)"
+            if attack_value == "Abuse of functionality":
+                attack_value = str(request.form.get('attack_type'))
+            rule_value = dynamic_value + ":" + "\"" + str(request.form.get('val')) + "\"" + "; nocase;"
             waf_data = {"name": str(request.form.get('name')), "apply_to": str(request.form.get('apply_to')),
-                        "attack_type": str(request.form.get('attack_type')), "rule": rule_value,
-                        "accuracy": str(request.form.get('accuracy')), "risk": str(request.form.get('priority'))}
+                        "attack_type": attack_value, "rule": rule_value,
+                        "accuracy": str(final_accracy_result), "risk": str(final_priority_result)}
             update_xml(waf_data)
             json_path = "./templates/bigip_waf_conf.xml"
 
@@ -77,12 +100,19 @@ def update_xml(waf_data):
     """Update BigIP basic template with user inputs."""
     tree = ET.parse('bigip_waf_conf.xml')
     root = tree.getroot()
-    name = root.find('sig').find('rev')
-    name.set("sig_name", waf_data["name"])
-    name.set("risk", waf_data["risk"])
-    name.set("apply_to", waf_data["apply_to"])
-    name.set("accuracy", waf_data["accuracy"])
-    name.set("rule", waf_data["rule"])
+    child  = root.find('sig').find('rev')
+    grand_child_sig_name = child.find('sig_name')
+    grand_child_sig_name.text = waf_data["name"]
+    grand_child_rule = child.find("rule")
+    grand_child_rule.text =  waf_data["rule"]
+    grand_child_apply_to = child.find("apply_to")
+    grand_child_apply_to.text = waf_data["apply_to"]
+    grand_child_risk = child.find("risk")
+    grand_child_risk.text = waf_data["risk"]
+    grand_child_accuracy = child.find("accuracy")
+    grand_child_accuracy.text = waf_data["accuracy"]
+    grand_child_attack = child.find("attack_type")
+    grand_child_attack.text = waf_data["attack_type"]
 
     tree.write("./templates/bigip_waf_conf.xml")
 
