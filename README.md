@@ -86,17 +86,17 @@ Below is the sample form data payload for sending POST request to API Endpoint `
 
 #### UI use case steps
 Below are the steps for creating custom WAF bundle through UI:
-1. Open browser and navigate to `https://wafgen.f5-hyd-demo.com`
-2. Provide all user inputs and then click on `Submit` button 
-3. From page, users can either `copy` or `download` the populated WAF signature data
-4. Next as a optional step, customers can import this bundle in any of the WAF engines and add it to their WAF configuration (Note: this is not covered as part of the project)
+1. Open browser and navigate to `https://wafgen.f5-hyd-demo.com`.
+2. Provide all user inputs and then click on `Submit` button.
+3. From page, users can either `copy` or `download` the populated WAF signature data.
+4. Next as a optional step, customers can import this bundle in any of the WAF engines and add it to their WAF configuration (Note: this is not covered as part of the project).
 
 
 ## Deployment Steps
 If users don't want to use publicly available DNS, they can deploy this application locally in below ways:
-1. Build docker image using Dockerfile and create container from it. Refer docker build and run docs for more info
-2. In docker enginer user's can run `docker run --name wafgen -d -p 80:8000 registry.gitlab.com/sbmmsra/waf-signature-generator` to run it as container and expose it on 80 port
-3. We can also run this code as k8s service by simply running `kubectl apply -f custom_waf_flask.yml` which will bring up k8s deployment and service (NOTE: you should have access to k8s cluser using kubeconfig and svc is available on port 8000).
+1. Build docker image using Dockerfile and create container from it. Refer docker build and run docs for more info.
+2. In docker enginer user's can run `docker run --name wafgen -d -p 80:8000 registry.gitlab.com/sbmmsra/waf-signature-generator` to run it as container and expose it on 80 port.
+3. We can also run this code as k8s service by simply running `kubectl apply -f custom_waf_flask.yml` which will bring up k8s deployment and service (`NOTE:` you should have access to k8s cluser using kubeconfig and svc is available on port 8000).
 
 ## Business Value
 
