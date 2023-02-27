@@ -25,13 +25,13 @@ Application is written in flask, deployed as k8s service and finally published o
 
 APIs:
   
-| Valid API Endpoints  | Allowed Mehods                                                               |
+| Valid API Endpoints  | Allowed HTTP Methods                                                               |
 | ------ | ------------------------------------------------------------------------- |
 | /                        | GET & POST |
 | /download_file/[target]  | GET |
 
 ```
-Example Values for form data in request (POST)
+Example Values for form data in request to API Endpoint /
 
 "formdata": [
 	{
