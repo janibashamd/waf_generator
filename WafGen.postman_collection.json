@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "79391aff-6253-42bb-93f3-5e0f0f49b716",
+		"name": "WafGen",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST Request to API Endoint /",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "custom-waf-sig",
+							"type": "default"
+						},
+						{
+							"key": "target",
+							"value": "xc",
+							"type": "default"
+						},
+						{
+							"key": "apply_to",
+							"value": "Request",
+							"type": "default"
+						},
+						{
+							"key": "attack_type",
+							"value": "Abuse of functionality",
+							"type": "default"
+						},
+						{
+							"key": "rule",
+							"value": "Header",
+							"type": "default"
+						},
+						{
+							"key": "key",
+							"value": "custom-hdr",
+							"type": "default"
+						},
+						{
+							"key": "val",
+							"value": "<script>",
+							"type": "default"
+						},
+						{
+							"key": "accuracy",
+							"value": "HIGH",
+							"type": "default"
+						},
+						{
+							"key": "priority",
+							"value": "HIGH",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://wafgen.f5-hyd-demo.com/",
+					"protocol": "https",
+					"host": [
+						"wafgen",
+						"f5-hyd-demo",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Request to API Endpoint /download_file/<target>",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://wafgen.f5-hyd-demo.com/download_file/xc",
+					"protocol": "https",
+					"host": [
+						"wafgen",
+						"f5-hyd-demo",
+						"com"
+					],
+					"path": [
+						"download_file",
+						"xc"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
